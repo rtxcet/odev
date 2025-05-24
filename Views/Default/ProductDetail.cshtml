@@ -1,0 +1,36 @@
+﻿@model Odev.Models.Products
+
+<section class="hero bg-dark text-white text-center py-5 ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 data-aos="fade-up">Ürün Detayı</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="product-list py-5 bg-black text-white">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-md-6">
+                <img src="@Model.Image"
+                     class="img-fluid rounded border border-secondary"
+                     alt="@Model.Name"
+                     style="height: 400px; width: 100%; object-fit: cover;" />
+            </div>
+
+            <div class="col-md-6" style="color:black">
+                <h2 class="text-danger">@Model.Name</h2>
+                <p>@Model.Description</p>
+                <p class="fw-bold fs-4">₺@Model.Price</p>
+
+                <!-- WhatsApp ile Satın Al -->
+                <a href="https://wa.me/905551112233?text=Merhaba,%20@Model.Name%20ürününü%20satın%20almak%20istiyorum."
+                   target="_blank" class="btn btn-success btn-lg mt-3">
+                    <i class="fab fa-whatsapp"></i> WhatsApp ile Satın Al
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

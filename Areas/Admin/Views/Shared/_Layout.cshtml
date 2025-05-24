@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin Panel</title>
+
+    <!-- Bootstrap Css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Flag Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/css/flag-icons.min.css" />
+
+    <!-- Css -->
+    <link rel="stylesheet" href="~/Admin/Css/page/index.css" asp-append-version="true" />
+</head>
+<body>
+    <!-- Sidebar Backdrop -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop" onclick="toggleSidebar()"></div>
+
+    <div id="sidebar" class="sidebar">
+        <h4 class="text-center py-3 border-bottom">Admin Panel</h4>
+        <a href="/Admin"><i class="fas fa-home me-2"></i> Anasayfa</a>
+        <a href="/Admin/Products"><i class="fas fa-users me-2"></i> Ürün Ekle</a>
+        <a href="/Admin/Contact"><i class="fas fa-cog me-2"></i> Mesajlar Listele</a>
+
+      
+    </div>
+
+
+    <div id="main" class="main">
+
+        <header>
+            <div class="container d-flex justify-content-between align-items-center">
+
+                <!-- Left Side -->
+                <div class="left d-flex align-items-center">
+                    <span class="toggle-btn me-3" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </span>
+                    <!-- Eğer logo veya başka içerik eklemek istersen buraya ekleyebilirsin -->
+                </div>
+
+                <!-- Right Side -->
+                <div class="right d-flex align-items-center">
+
+                    <!-- Language Dropdown -->
+                    <!-- Profile Dropdown -->
+                    <div class="dropdown">
+                        <a class="dropdown-toggle text-dark text-decoration-none d-flex align-items-center" href="#"
+                           id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="user-icon">
+                                <i class="fas fa-user-circle profile-img"></i>
+                            </div>
+                        
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user-cog me-2"></i>Profil
+                                    Ayarları
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"><i class="fas fa-users me-2"></i>Tüm Kullanıcılar</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-danger" href="/admin/login/Logout">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Çıkış
+                                    Yap
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                @RenderBody()
+            </div>
+        </main>
+
+    </div>
+
+
+    <!-- Bootstrap Bundle JS (Popper Dahil) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+
+    <script>
+        // Sidebar Toggle Function
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('sidebarBackdrop');
+
+            sidebar.classList.toggle('show');
+            backdrop.classList.toggle('show');
+        }
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

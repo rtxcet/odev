@@ -1,0 +1,43 @@
+﻿@model Odev.Models.Products
+
+@{
+    ViewData["Title"] = "Notbed Ürün Testi";
+}
+
+<div class="container mt-4">
+    <h2>Yeni Ürün Test</h2>
+
+ 
+
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Ürün Adı</label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Açıklama</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label">Fiyat</label>
+            <input asp-for="Price" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Resim</label>
+            <input type="file" name="img" class="form-control" />
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model?.Image))
+        {
+            <div class="mb-3">
+                <label>Yüklenen Görsel:</label><br />
+                <img src="@Model.Image" width="150" />
+            </div>
+        }
+
+        <button type="submit" class="btn btn-primary">Ekle</button>
+    </form>
+</div>
