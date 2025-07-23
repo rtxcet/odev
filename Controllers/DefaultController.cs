@@ -15,15 +15,17 @@ namespace Odev.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Product()
-        {
             var products = _context.Products.ToList();  // Veritabanından ürünleri çekiyoruz
             return View(products);                      // View'e model olarak gönderiyoruz
         }
 
+
+
+        public IActionResult About()
+        {
+            return View();
+        }
+     
         public IActionResult ProductDetail(int id)
         {
             var product = _context.Products.Find(id);
